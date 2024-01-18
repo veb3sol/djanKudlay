@@ -25,5 +25,9 @@ class News(models.Model):
     is_published = models.BooleanField(default = True)
     # default = True -- значение по умолчанию
 
+    # для того что бы не object представлял обьект а строка - например заголовок
+    def __str__(self):
+        return self.title
+
 
 
