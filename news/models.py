@@ -12,22 +12,28 @@ is_published  -- Boolean
 """
 
 class News(models.Model):
-    title = models.CharField(max_length = 150)
+    title = models.CharField(max_length = 150, verbose_name='Заголовок')
     # max_length = 150   -- максимальная длина строки, обьязательный атрибут
-    content = models.TextField(blank = True)
+    content = models.TextField(blank = True, verbose_name='Контент')
     # blank = True  -- поле не обязательное к заполнению, по умолчанию все поля обьязательны к заполнению
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    created_at = models.DateTimeField(auto_now_add = True, verbose_name='Создано')
+    updated_at = models.DateTimeField(auto_now = True, verbose_name = 'Отредактировано')
     # auto_now_add = True  -- запишет только дату создания, при перезаписи данные даты и времени не поменяются
     # auto_now = True  -- перезаписывает дату и время при каждом обновлении
-    photo = models.ImageField(upload_to = 'photo/%Y/%m/%d')
+    photo = models.ImageField(upload_to = 'photo/%Y/%m/%d', verbose_name='Фото', blank = True)
     # upload_to = 'photo/%Y/%m/%d'  -- куда сохранять фото при загрузке, Y - год, m - месяц, d - день
-    is_published = models.BooleanField(default = True)
+    is_published = models.BooleanField(default = True, verbose_name = 'Опубликовано')
     # default = True -- значение по умолчанию
 
     # для того что бы не object представлял обьект а строка - например заголовок
     def __str__(self):
         return self.title
+
+    # как модель будет отображаться в админке
+    class Meta:
+        verbose_name = 'Новость' # название в единственном числе
+        verbose_name_plural = 'Новости'   # название в множественном числе
+        ordering = ['-created_at']  # по какому полю сортировать - и на сайт тоже влияет
 
 
 
