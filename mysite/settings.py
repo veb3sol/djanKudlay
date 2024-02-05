@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
@@ -125,3 +125,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA__ROOT = os.path.join(BASE_DIR, 'media')        # куда загружать файлы
 MEDIA_URL = '/media/'                               # с какой пвпки брать файлы относительно корня
+
+CMS_LANGUAGES = {
+## Customize this
+'default': {
+    'public': True,
+    'hide_untranslated': False,
+    'redirect_on_fallback': True,
+},
+1: [
+    {
+        'name': 'Русский',
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+        'code': 'ru',
+    },
+    {
+        'name': 'Українська',
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+        'code': 'uk',
+    },
+    {
+        'name': 'English',
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+        'code': 'en',
+    },
+],
+}
