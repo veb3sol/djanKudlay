@@ -30,6 +30,10 @@ class News(models.Model):
     # on_delete = models.PROTECT  -- не позволяем удалять категории если есть статьи такой категории
     # null = True  значение может быть null, потому что изначально у нас нету никакой категории
 
+    # определим любой метод класса модели что бы использовать его в шаблоне
+    def my_func(self):
+        return 'Hello from model News'
+
     # для того что бы не object представлял обьект а строка - например заголовок
     def __str__(self):
         return self.title
