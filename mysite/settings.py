@@ -123,8 +123,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA__ROOT = os.path.join(BASE_DIR, 'media')        # куда загружать файлы
-MEDIA_URL = '/media/'                               # с какой пвпки брать файлы относительно корня
+MEDIA__ROOT = os.path.join(BASE_DIR, '')        # заходить в корень
+MEDIA_URL = '/media/'                               #общая папка для всех приложений
 
 CMS_LANGUAGES = {
 ## Customize this
